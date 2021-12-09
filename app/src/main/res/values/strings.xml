@@ -5,7 +5,7 @@
     <string name="stats">Statistics</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="GIVC">Мониторинг эффективности деятельности учереждений</string>
+    <string name="GIVC">Мониторинг эффективности</string>
     <string name="portals">Порталы</string>
     <string name="next_portal">Далее</string>
 </resources>
