@@ -5,34 +5,48 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-
-
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var portalRecyclerView: RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        portalRecyclerView = findViewById(R.id.portal_recycler_view)
 
-        val portalList: List<Portal> = listOf(
-            Portal("Минобрануки России", R.drawable.portalminobr),
-            Portal("ЦОИАС", R.drawable.portalcbias),
-            Portal("Официальный сайт ГМУ", R.drawable.portalbasgov),
-            Portal("ИАС Мониторинг", R.drawable.givts),
+        bottomNavigationView = findViewById(R.id.bottom_navigation_menu)
 
-            )
-        portalRecyclerView.layoutManager = LinearLayoutManager(this,
-            LinearLayoutManager.VERTICAL, false)
-        portalRecyclerView.adapter = PortalAdapter(portalList)
-
+        bottomNavigationView.setOnItemReselectedListener { item ->
+            var fragment: Fragment? = null
+            when (item.itemId) {
+                R.id.fragment_1 -> {
+                    fragment = FirstFragment()
+                }
+                R.id.fragment_2 -> {
+                    fragment = SecondFragment()
+                }
+                R.id.fragment_3 -> {
+                    fragment = ThirdFragment()
+                }
+            }
+            replaceFragment(fragment!!)
+            true
+        }
+        bottomNavigationView.selectedItemId=R.id.fragment_1
 
     }
 
+    fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+
+    }
 }
 
-private fun replaceFragment(fragment: Fragment) {}
+
 
