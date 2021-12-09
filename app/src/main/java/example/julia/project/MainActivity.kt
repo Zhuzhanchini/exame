@@ -3,11 +3,8 @@ package example.julia.project
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-lateinit var portalRecyclerView: RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             var fragment: Fragment? = null
             when (item.itemId) {
                 R.id.fragment_1 -> {
-                    fragment = FirstFragment()
+                    fragment = PortalImageFragment()
                 }
                 R.id.fragment_2 -> {
                     fragment = SecondFragment()
